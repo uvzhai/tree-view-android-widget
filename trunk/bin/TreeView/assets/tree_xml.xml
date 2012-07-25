@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<o>
+	<tree class="array">
+		<e class="object">
+			<node class="object">
+				<name type="string">profile</name>
+				<title type="string">简介</title>
+			</node>
+		</e>
+		<e class="object">
+			<node class="object">
+				<child class="array">
+					<e class="object">
+						<node class="object">
+							<name type="string">xiaoxue</name>
+							<title type="string">小学</title>
+						</node>
+					</e>
+					<e class="object">
+						<node class="object">
+							<name type="string">zhongxue</name>
+							<title type="string">中学</title>
+						</node>
+					</e>
+					<e class="object">
+						<node class="object">
+							<name type="string">daxue</name>
+							<title type="string">大学</title>
+						</node>
+					</e>
+				</child>
+				<name type="string">xuexiao</name>
+				<title type="string">学校</title>
+			</node>
+		</e>
+		<e class="object">
+			<node class="object">
+				<child class="array">
+					<e class="object">
+						<node class="object">
+							<child class="array">
+								<e class="object">
+									<node class="object">
+										<child class="array">
+											<e class="object">
+												<node class="object">
+													<name type="string">xinchuang</name>
+													<title type="string">莘庄</title>
+												</node>
+											</e>
+											<e class="object">
+												<node class="object">
+													<name type="string">qibao</name>
+													<title type="string">七宝</title>
+												</node>
+											</e>
+											<e class="object">
+												<node class="object">
+													<name type="string">gumei</name>
+													<title type="string">古美</title>
+												</node>
+											</e>
+										</child>
+										<title type="string">闵行区</title>
+									</node>
+								</e>
+								<e class="object">
+									<node class="object">
+										<title type="string">徐汇区</title>
+									</node>
+								</e>
+								<e class="object">
+									<node class="object">
+										<title type="string">长宁区</title>
+									</node>
+								</e>
+							</child>
+							<title type="string">上海</title>
+						</node>
+					</e>
+					<e class="object">
+						<node class="object">
+							<title type="string">合肥</title>
+						</node>
+					</e>
+					<e class="object">
+						<node class="object">
+							<title type="string">台北</title>
+						</node>
+					</e>
+				</child>
+				<name type="string">chengshi</name>
+				<title type="string">城市</title>
+			</node>
+		</e>
+	</tree>
+</o>

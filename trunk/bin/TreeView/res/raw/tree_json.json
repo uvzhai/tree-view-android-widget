@@ -1,0 +1,96 @@
+{
+    "tree": [
+        {
+            "node": {
+                "name": "profile",
+                "title": "简介"
+            }
+        },
+        {
+            "node": {
+                "name": "xuexiao",
+                "title": "学校",
+                "child": [
+                    {
+                        "node": {
+                            "name": "xiaoxue",
+                            "title": "小学"
+                        }
+                    },
+                    {
+                        "node": {
+                            "name": "zhongxue",
+                            "title": "中学"
+                        }
+                    },
+                    {
+                        "node": {
+                            "name": "daxue",
+                            "title": "大学"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "name": "chengshi",
+                "title": "城市",
+                "child": [
+                    {
+                        "node": {
+                            "title": "上海",
+                            "child": [
+                                {
+                                    "node": {
+                                        "title": "闵行区",
+                                        "child": [
+                                            {
+                                                "node": {
+                                                    "name": "xinchuang",
+                                                    "title": "莘庄"
+                                                }
+                                            },
+                                            {
+                                                "node": {
+                                                    "name": "qibao",
+                                                    "title": "七宝"
+                                                }
+                                            },
+                                            {
+                                                "node": {
+                                                    "name": "gumei",
+                                                    "title": "古美"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "node": {
+                                        "title": "徐汇区"
+                                    }
+                                },
+                                {
+                                    "node": {
+                                        "title": "长宁区"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "node": {
+                            "title": "合肥"
+                        }
+                    },
+                    {
+                        "node": {
+                            "title": "台北"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

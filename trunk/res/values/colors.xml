@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_divider_color">#ff909090</color>
+    <color name="griditem_bg">#f1f0ea</color>
+</resources>

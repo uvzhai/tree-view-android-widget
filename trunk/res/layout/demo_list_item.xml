@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical"
+    android:padding="2dip"
+    android:background="@drawable/listitem_bg_selector" >
+
+    <ImageView 
+        android:id="@+id/node_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/parent_collapse"/>
+    <TextView
+        android:id="@+id/demo_list_item_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dip"
+        android:textSize="24dp" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/demo_list_item_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="4dip"
+        android:textSize="24dp" >
+    </TextView>
+
+    <CheckBox
+        android:id="@+id/demo_list_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:checked="false"
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:padding="0dip"
+        android:soundEffectsEnabled="true"
+        android:text="" >
+    </CheckBox>
+
+</LinearLayout>

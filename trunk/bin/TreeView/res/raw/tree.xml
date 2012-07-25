@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tree>
+    <node title="profile">
+    </node>
+    <node title="xuexiao">
+        <node title="xiaoxue"></node>
+        <node title="zhongxue"></node>
+        <node title="daxue"></node>
+    </node>
+    <node title="chengshi">
+        <node title="shanghai">
+			<node title="minhang"></node>
+			<node title="xuhui"></node>
+			<node title="changning"></node>
+        </node>
+        <node title="hk">
+        </node>
+        <node title="taibei"></node>
+    </node>
+</tree>
