@@ -26,7 +26,8 @@ import com.netbean.view.TreeViewList;
  * 
  */
 public class TreeViewListDemo extends Activity {
-	private enum TreeType implements Serializable {
+	private enum TreeType implements Serializable 
+	{
 		SIMPLE, FANCY
 	}
 
