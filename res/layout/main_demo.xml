@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:treeView="http://schemas.android.com/apk/res/com.netbean"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <!--  treeView:indicator_gravity="right|center_vertical" -->
+    <com.netbean.view.TreeViewList
+        android:id="@+id/mainTreeView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"
+        android:smoothScrollbar="true"
+        android:divider="@color/item_divider_color"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/listitem_bg_selector"
+        android:background="@color/griditem_bg"
+        treeView:indicator_gravity="right|center_vertical" />
+</LinearLayout>
