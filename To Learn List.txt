@@ -1,0 +1,196 @@
+
+2012/7/24
+
+1.
+需求只来自你对用户的了解 普通用户
+  找到需求背后的心理诉求
+
+  使用的场景
+
+2.
+做多源自不自信
+
+2012/7/20
+q:
+对于微博这种时新性数据量存储要求很高的服务，系统架构上如何进行应对，同时，如果需要更好地考虑之后的系统升级，架构上需要考虑哪些关键点
+a:
+1 多用内存存储，比如近期消息和实时计算都会在内存里进行。
+2 采用分布式并行计算分担负载。 
+
+系统升级要考虑的关键点有：
+低耦合；
+设计上尽量可平行扩容；
+协议和数据的设计要有扩展性，留有部分冗余；
+模块化和层次化；
+尽量采用成熟的开源系统有助于系统升级
+
+q:
+腾讯微博终端覆盖网页、Wap、QQ、iPhone及Andriod客户端等，如何保证一个产品功能在其中一个终端进行尝试并验证成功之后，快速复制到其它终端，在架构设计和项目管理上有哪些挑战？
+
+a:
+主要有几个方面，
+1是平台化，把基础功能，基础逻辑都封装在平台里。这是多终端环境下必须要做的，
+2 平台内部是低耦合可叠加的，可以快速的把新的模块加入到平台中。
+3 尽量把逻辑放到后台 
+4 需要团队多沟通多协调
+
+q:
+腾讯微博的主timeline消息推送是如何实现的，如果来保证广播的实时性？
+a:
+腾讯微博主timeline获取上主要采用拉模式（poll），
+和推模式（push）进行对比来看拉模式拉模式在实现起来比较容易和简单，
+但是拉需要更多的考虑主timeline性能问题，
+微博后台服务通过高性能的用户关系系统，用户消息索引系统，和主timeline系统协作完成，保证主timeline的性能。
+
+q:
+腾讯微博的信息存储是如何来承载海量服务的？
+a:
+微博里海量信息有微博消息，用户信息，关系链和图片等等。
+主要采用内存，NoSQL数据库，云文件系统存储。
+内存用于存放近期消息，用户信息，短关系链等等，用于快速访问和聚合计算。
+NoSQL数据库存全量数据。
+云文件系统用于存放图片数据。
+图片是微博里数据量最大的部分
+
+2012/6/8
+
+
+android 2D Graphic
+UI View 布局，绘制机制
+
+UI 事件处理机制
+
+android内存分析
+
+5/3
+布局动画
+
+View matrix
+Animation
+
+框架层 framework
+
+//int nY = mLoadingLayout.getHeight();
+//mResultListView.setSelectionFromTop(nSelectionIndex, -nY);
+
+1. 返回后，cancel 之前的网络请求 ok
+2. 100多 第一次loading状态看不到issue fixed
+
+2/27
+android shape corners
+
+2/17
+学习一个开源的launcer
+
+2/16
+1. service  --work-- sendBroadcast(intent)
+2. client start request  service start-run-ok-stop
+3. BroadcastReceiver
+
+2/15
+android service service lifecycle
+
+IntentService OnHandleIntent()
+
+写一个service去查询更新的信息
+
+
+1/16
+upload file 上传图片
+upload content zip
+httpclient 3.1
+异步方式，用Handler通知消息,子线程Thread/Runnable来完成耗时的上传，
+
+1/13
+baidu map qq sinaweibo qq 浏览器 opensudoku 导航犬 tencent weibo duomi adobe reader defender uno free 天天动听 ireader qq reader 植物大战僵尸
+ nfs shift 豆瓣购书单 文件大师 快拍二维码 墨迹天气 微信 gmail diandian  camera360 大众点评 qq music 条码扫描器 海词词典 8684公交 随手记  re explorer 应用宝 鳄鱼小顽皮爱水 opera mini 91手机助手 compass youku 网易新闻 qq通讯录
+
+1/12
+1. api demo service ServiceStartArguments.java
+
+1/11
+1. 收集手机安装的android apps
+2. compare: java thread and android service
+   
+
+3. java 两个大int相乘 溢出，使用long int 2'31-1 long 2'63-1
+4. android proguard
+5. app md5 check 
+
+2012/1/10 - 1/11
+1. 学习Apache Commons I/O源码
+   用到的设计模式(Observer Listener)
+   Interface
+   学习commons io下面的monitor组件
+   
+2. Apache Commons httpclient
+3. google protobuf
+4. 了解QRCode QRCode app
+
+2012/1/7
+了解DW hadoop的业界使用现状
+1. Hadoop集群
+2. Hive bigtable
+
+2012/1/5
+1. QWeibo outh （intent-filter activity）
+2. 了解android NFC
+
+2011/12/29
+1. android IPC (inter-process communication)
+   对象请求代理 
+   activity service (service manager) binder 
+   service(service_name, handle)
+   
+2. android Intent 表示软件开放的接口，用于标示component。android系统通过intent,启动相应的components，传递数据。或发送广播sendBroadcast(intent)
+   intent action data schema
+   intent-filter
+    
+3. xmpp 实时协议 XMPP server XMPP client smack
+
+12/28
+tcp http tcp socket udp pipe
+java io java nio selector 
+linux network programming： select poll epoll libevent开源库 (linux网络编程)
+libevent reactor设计模式
+
+12/21
+StringBuffer StringBuilder比较
+HashMap并发优化
+
+11/28
+Android NDK JNI
+source code and tarball:
+gcc sin.c -lm -L/lib -L/usr/lib -I/usr/include
+
+libxxx.a
+libxxx.so
+
+
+11/27
+C 宏定义
+#define K 1
+
+#ifdef K
+...
+else
+...
+endif
+
+#ifndef K
+...;
+else
+...;
+endif
+
+
+
+刷android ROM 拿到root权限
+
+11/14
+1. android 自定义view。
+2. android ndk .so。
+
+11/22
+1. libjpcap.so
+
