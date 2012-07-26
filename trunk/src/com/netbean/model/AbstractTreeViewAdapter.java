@@ -39,9 +39,6 @@ public abstract class AbstractTreeViewAdapter<T> extends BaseAdapter implements 
 	private Drawable collapsedDrawable;
 	private Drawable expandedDrawable;
 	
-	//private Drawable indicatorBackgroundDrawable;
-	//private Drawable rowBackgroundDrawable;
-
 	private final OnClickListener indicatorClickListener = new OnClickListener() {
 		@Override
 		public void onClick(final View v)

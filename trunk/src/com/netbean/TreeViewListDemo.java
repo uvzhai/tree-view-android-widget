@@ -14,8 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
+import com.netbean.datasource.ITreeParser;
 import com.netbean.datasource.TreeBuilder;
-import com.netbean.datasource.TreeParser;
+import com.netbean.datasource.TreeParser4Json;
 import com.netbean.model.InMemoryTreeStateManager;
 import com.netbean.model.TreeStateManager;
 import com.netbean.view.TreeNodeInfo;
@@ -26,8 +27,7 @@ import com.netbean.view.TreeViewList;
  * 
  */
 public class TreeViewListDemo extends Activity {
-	private enum TreeType implements Serializable 
-	{
+	private enum TreeType implements Serializable {
 		SIMPLE, FANCY
 	}
 
@@ -57,13 +57,16 @@ public class TreeViewListDemo extends Activity {
 		boolean newCollapsible = true;
 		if (savedInstanceState == null)
 		{
-			TreeParser treeParser = new TreeParser();
+			//ITreeParser treeParser = new TreeParser4Xml();
+			ITreeParser treeParser = new TreeParser4Json();
 			try
 			{
-				// List<TreeNodeInfo<?>> result =
-				// treeParser.parseFromJson(this.getAssets().open("tree_json.json"));
-				List<TreeNodeInfo<?>> result = treeParser.parseFromJson(this.getResources().openRawResource(
-						R.raw.tree_json));
+				List<TreeNodeInfo<?>> result = null;
+				// result =
+				// treeParser.parse(this.getAssets().open("tree_json.json"));
+				result = treeParser.parse(this.getResources().openRawResource(R.raw.tree_json));
+				// result =
+				// treeParser.parse(this.getResources().openRawResource(R.raw.tree));
 				if (null != result)
 				{
 					manager = new InMemoryTreeStateManager<Long>();
@@ -91,8 +94,6 @@ public class TreeViewListDemo extends Activity {
 
 		setContentView(R.layout.main_demo);
 		treeView = (TreeViewList) findViewById(R.id.mainTreeView);
-		// fancyAdapter = new FancyColouredVariousSizesAdapter(this, selected,
-		// manager, LEVEL_NUMBER);
 		simpleAdapter = new SimpleStandardAdapter(this, selected, manager, LEVEL_NUMBER);
 		setTreeAdapter(newTreeType);
 		setCollapsible(newCollapsible);

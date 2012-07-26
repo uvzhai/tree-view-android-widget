@@ -14,14 +14,20 @@ import org.json.JSONObject;
 
 import com.netbean.view.TreeNodeInfo;
 
-public class TreeParser {
+public class TreeParser4Json implements ITreeParser{
 
+	@Override
+	public List<TreeNodeInfo<?>> parse(InputStream is)
+	{
+		return parseFromJson(is);
+	}
+	
 	/**
 	 * 
 	 * @param aIns
 	 * @return
 	 */
-	public List<TreeNodeInfo<?>> parseFromJson(InputStream aIns)
+	private List<TreeNodeInfo<?>> parseFromJson(InputStream aIns)
 	{
 		List<TreeNodeInfo<?>> result = null;
 		
