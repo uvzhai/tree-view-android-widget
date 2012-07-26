@@ -1,0 +1,34 @@
+Design:
+android tree view
+
+1.考虑数据结构，用面向对象的分析方法设计对象结构     
+
+多叉树；
+
+treeNode: title,level
+
+tree: 
+xml or json format
+
+TODO xml format
+
+tree state:树的节点，展开和收起
+
+2.写出HappyPass流程，流程中可以用接口，和方法(把难点先空出来。先只写出输入，输出参数及类型)。后面再考虑具体实现。    
+
+1）树的层次配置(xml or Map）和初始化
+
+2）继承Adapter，提供list item的layout和getView() 
+
+   1.treeStateManager VisibleList保存可见的Tree Node ID
+	
+   2.listview treeview数据变化时，通知Adapter更新：android adapter registerDataSetObserver
+   
+   3.Adapter getCount() getView()
+   
+   
+
+3）TreeListView继承ListView，用于显示UI，事件处理
+
+
+3.处理Exception process，Refine code，Check边界条件
