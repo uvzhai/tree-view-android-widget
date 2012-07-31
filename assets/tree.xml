@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="gbk"?>
+<tree xmlns="http://www.example.com/tree" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.com/tree.xsd">
+	<node id="" name="profile" title="简介" level="0" entry="">
+	</node>
+	<node name="xuexiao" title="学校" level="0">
+		<node name="xiaoxue" title="小学" level="1"></node>
+		<node name="zhongxue" title="中学" level="1"></node>
+		<node name="daxue" title="大学" level="1"></node>
+	</node>
+	<node name="chengshi" title="城市" level="0">
+		<node name="shanghai" title="上海" level="1">
+			<node name="minhang" title="闵行" level="2">
+				<node name="" title="莘庄" level="3"></node>
+				<node name="" title="七宝" level="3"></node>
+				<node name="" title="莘庄" level="3"></node>
+			</node>
+			<node name="xuhui" title="徐汇" level="2"></node>
+			<node name="changning" title="长宁" level="2"></node>
+		</node>
+		<node title="合肥" level="1">
+		</node>
+		<node title="台北" level="1">
+		</node>
+	</node>
+</tree>
