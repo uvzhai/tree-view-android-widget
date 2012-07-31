@@ -18,6 +18,16 @@ public class ScrollScreenLayout extends ViewGroup {
 		super(context, attrs);
 		init(context);
 	}
+	
+	public void setIndicator(IndicateListener aIndicator)
+	{
+		if(null != aIndicator)
+		{
+			this.mIndicator = aIndicator;
+			final int childCount = this.getChildCount();
+			this.mIndicator.onIndicatorInit(childCount);
+		}
+	}
 
 	private void init(Context context)
 	{
@@ -27,7 +37,6 @@ public class ScrollScreenLayout extends ViewGroup {
 
 		// mDetector = new GestureDetector(new
 		// GestureDetector.SimpleOnGestureListener());
-
 		mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
 	}
 
