@@ -72,8 +72,7 @@ public class PageIndicator2 extends ViewGroup {
 		detachAllViewsFromParent();
 
 		// 1.dot width,separation
-		TransitionDrawable drawable = (TransitionDrawable) this.getResources().getDrawable(mDotDrawableID);
-		int dotWidth = drawable.getIntrinsicWidth();
+		int dotWidth = this.getResources().getDrawable(mDotDrawableID).getIntrinsicWidth();
 		int separation = dotWidth;
 
 		// 2.left,top
@@ -84,6 +83,8 @@ public class PageIndicator2 extends ViewGroup {
 		for (int idx = 0; idx < mTotalItems; idx++)
 		{
 			ImageView dot = new ImageView(getContext());
+			TransitionDrawable drawable = (TransitionDrawable) this.getResources().getDrawable(mDotDrawableID);
+			drawable.setCrossFadeEnabled(true);
 			dot.setImageDrawable(drawable);
 			LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 			dot.setLayoutParams(params);
@@ -97,6 +98,10 @@ public class PageIndicator2 extends ViewGroup {
 			{
 				drawable.startTransition(200);
 			}
+//			else
+//			{
+//				drawable.resetTransition();
+//			}
 		}
 		
 		postInvalidate();

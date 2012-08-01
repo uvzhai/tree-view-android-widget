@@ -1,10 +1,3 @@
-/**
- * Copyright (C) 2011 Tencent Inc. All rights reserved, for internal usage only.
- * 
- * Project: Soso_Client FileName: PageIndicator.java
- * 
- * Description: Author: oopsli (oopsli@tencent.com) Created: 2011-9-20
- */
 package com.netbean.scrollview;
 
 import com.netbean.R;
