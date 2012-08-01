@@ -6,13 +6,16 @@ import java.util.List;
 import java.util.Set;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.netbean.datasource.ITreeParser;
 import com.netbean.datasource.TreeBuilder;
@@ -26,7 +29,7 @@ import com.netbean.view.TreeViewList;
  * Demo activity showing how the tree view can be used.
  * 
  */
-public class TreeViewListDemo extends Activity {
+public class TreeViewListDemo extends Activity implements OnItemClickListener {
 	private enum TreeType implements Serializable {
 		SIMPLE, FANCY
 	}
@@ -98,6 +101,7 @@ public class TreeViewListDemo extends Activity {
 		setTreeAdapter(newTreeType);
 		setCollapsible(newCollapsible);
 		registerForContextMenu(treeView);
+		treeView.setOnItemClickListener(this);
 	}
 
 	@Override
@@ -230,6 +234,16 @@ public class TreeViewListDemo extends Activity {
 		else
 		{
 			return super.onContextItemSelected(item);
+		}
+	}
+	
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+	{
+		if(0 == position)
+		{
+			Intent pIntent = new Intent(this, ScrollViewDemo.class);
+			startActivity(pIntent);
 		}
 	}
 }

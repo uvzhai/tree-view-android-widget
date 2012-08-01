@@ -7,17 +7,20 @@
     <uses-sdk android:minSdkVersion="7" />
 
     <application
+        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:debuggable="true" >
+        android:label="@string/app_name" >
         <activity
-            android:name=".ScrollViewDemo"
+            android:name=".TreeViewListDemo"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ScrollViewDemo"
+            android:label="@string/scrollviewdemo" >
         </activity>
     </application>
 

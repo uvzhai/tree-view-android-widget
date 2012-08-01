@@ -18,10 +18,6 @@
     <string name="delete_menu">Delete</string>
     <string name="delete_menu_condensed">Delete</string>
     
-    <string name="profile">简介</string>
-    <string name="xuexiao">学校</string>
-    <string name="xiaoxue">小学</string>
-    <string name="zhongxue">中学</string>
-    <string name="daxue">大学</string>
+    <string name="scrollviewdemo">ScrollViewDemo</string>
     
 </resources>
