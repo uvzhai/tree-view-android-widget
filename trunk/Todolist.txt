@@ -1,11 +1,15 @@
 To do list:
 
+8/1
+1.实现滑动的Indicator
+
 7/31
 1.实现滑动的Indicator
 
 1.update resume
 2.android develop java web develop
 3.plus linux c
+4.java multi-thread
 
 7/30-31
 1.实现滑动的Indicator

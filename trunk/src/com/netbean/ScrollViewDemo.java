@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.netbean.scrollview.PageIndicator2;
+import com.netbean.scrollview.PageIndicator;
 import com.netbean.scrollview.ScrollScreenLayout;
 import com.netbean.scrollview.ScrollScreenLayout.IndicateListener;
 
@@ -22,7 +22,7 @@ public class ScrollViewDemo extends Activity implements IndicateListener {
 		addChild(R.drawable.gingerbread);
 		addChild(R.drawable.honeycomb);
 		
-		mIndicator = (PageIndicator2) findViewById(R.id.indicatorview);
+		mIndicator = (PageIndicator) findViewById(R.id.indicatorview);
 		mScrollView.setIndicator(this);
 	}
 	
@@ -36,8 +36,11 @@ public class ScrollViewDemo extends Activity implements IndicateListener {
 	@Override
 	public void onIndicatorChange(float percent)
 	{
-		// TODO Auto-generated method stub
-
+		if (null != mIndicator)
+		{
+			int position = Math.round((mIndicator.getTotalItems() - 1) * percent);
+			mIndicator.setCurrentItem(position);
+		}
 	}
 
 	@Override
@@ -64,5 +67,5 @@ public class ScrollViewDemo extends Activity implements IndicateListener {
 	}
 
 	private ScrollScreenLayout mScrollView;
-	private PageIndicator2 mIndicator;
+	private PageIndicator mIndicator;
 }

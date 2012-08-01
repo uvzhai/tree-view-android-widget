@@ -3,7 +3,6 @@ package com.netbean.scrollview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -18,15 +17,25 @@ public class ScrollScreenLayout extends ViewGroup {
 		super(context, attrs);
 		init(context);
 	}
-	
+
 	public void setIndicator(IndicateListener aIndicator)
 	{
-		if(null != aIndicator)
+		if (null != aIndicator)
 		{
 			this.mIndicator = aIndicator;
 			final int childCount = this.getChildCount();
 			this.mIndicator.onIndicatorInit(childCount);
 		}
+	}
+
+	/**
+	 * set is loop screen or not
+	 * 
+	 * @param isLoopScreen
+	 */
+	public void setLoopScreen(boolean isLoopScreen)
+	{
+		this.mIsLoopScreen = isLoopScreen;
 	}
 
 	private void init(Context context)
@@ -80,7 +89,7 @@ public class ScrollScreenLayout extends ViewGroup {
 		}
 		else
 		{
-			// TODO update indicator
+			// update indicator
 			if (null != mIndicator)
 			{
 				mIndicator.onIndicatorFull(mCurrentScreen);
@@ -92,10 +101,8 @@ public class ScrollScreenLayout extends ViewGroup {
 	protected void onScrollChanged(int l, int t, int oldl, int oldt)
 	{
 		super.onScrollChanged(l, t, oldl, oldt);
-		// TODO
 		if (null != mIndicator)
 		{
-			// mIndicator.onIndicatorChange(percent);
 			float range = computeHorizontalScrollRange();
 			float offset = getScrollX();
 			float percent = offset / range;
@@ -106,7 +113,9 @@ public class ScrollScreenLayout extends ViewGroup {
 	@Override
 	protected int computeHorizontalScrollRange()
 	{
-		return super.computeHorizontalScrollRange();
+		// return super.computeHorizontalScrollRange();
+		final int availableToScroll = getChildAt(getChildCount() - 1).getRight() - getWidth();
+		return availableToScroll;
 	}
 
 	@Override
@@ -259,44 +268,51 @@ public class ScrollScreenLayout extends ViewGroup {
 		mCurrentScreen = whichScreen;
 		setMWidth();
 
-		int scrollX = getScrollX();
-		int startWidth = whichScreen * mWidth;
-		if (scrollX != startWidth)
+		// Loop screen
+		if (mIsLoopScreen)
 		{
-			int startX = 0;
-			int delta = 0;
-			
-			if (whichScreen > 1)
+			int scrollX = getScrollX();
+			int startWidth = whichScreen * mWidth;
+			if (scrollX != startWidth)
 			{
-				setPre();
-				startX = mWidth - startWidth + scrollX;
-				delta = startWidth - scrollX;
-			}
-			else if (whichScreen < 1)
-			{
-				setNext();
-				startX = scrollX + mWidth;
-				delta = -scrollX;
-			}
-			else
-			{
-				startX = scrollX;
-				delta = startWidth - scrollX;
-			}
+				int startX = 0;
+				int delta = 0;
 
-			mScroller.startScroll(startX, 0, delta, 0, Math.abs(delta) * 2);
-			invalidate(); // Redraw the layout
+				if (whichScreen > 1)
+				{
+					setPre();
+					startX = mWidth - startWidth + scrollX;
+					delta = startWidth - scrollX;
+				}
+				else if (whichScreen < 1)
+				{
+					setNext();
+					startX = scrollX + mWidth;
+					delta = -scrollX;
+				}
+				else
+				{
+					startX = scrollX;
+					delta = startWidth - scrollX;
+				}
+
+				mScroller.startScroll(startX, 0, delta, 0, Math.abs(delta) * 2);
+				invalidate(); // Redraw the layout
+			}
 		}
+		else
+		{
+			// No loop screen
+			final int newX = whichScreen * getWidth();
+			// final int newXX = getChildAt(whichScreen).getRight() -
+			// getWidth();
+			// Log.d(TAG, "newX: " + newX + "newXX: " + newXX);
 
-		// final int newX = whichScreen * getWidth();
-		//
-		// final int newXX = getChildAt(whichScreen).getRight() - getWidth();
-		// Log.d(TAG, "newX: " + newX + "newXX: " + newXX);
-		//
-		// final int delta = newX - getScrollX();
-		// Log.d(TAG, "delta: " + delta);
-		// mScroller.startScroll(getScrollX(), 0, delta, 0);
-		// invalidate();
+			final int delta = newX - getScrollX();
+			Log.d(TAG, "delta: " + delta);
+			mScroller.startScroll(getScrollX(), 0, delta, 0);
+			invalidate();
+		}
 	}
 
 	/**
@@ -351,14 +367,12 @@ public class ScrollScreenLayout extends ViewGroup {
 
 	private static final String TAG = "ScrollView";
 	private static final int SNAP_VELOCITY = 1000;
-	private static final int INVALID_SCREEN = -1;
 
 	private static final int TOUCH_STATE_REST = 0;
 	private static final int TOUCH_STATE_SCROLLING = 1;
 
 	private Scroller mScroller;
 	private float mLastMotionX;
-	private GestureDetector mDetector;
 
 	private VelocityTracker mVelocityTracker;
 	private int mMaximumVelocity;
@@ -368,8 +382,7 @@ public class ScrollScreenLayout extends ViewGroup {
 
 	private int mCurrentScreen;
 	private int mWidth;
-	// private int mNextScreen = -1;
-	// interface
 	private IndicateListener mIndicator;
 
+	private boolean mIsLoopScreen;
 }

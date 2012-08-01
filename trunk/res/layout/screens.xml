@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
@@ -9,11 +9,12 @@
         android:layout_height="fill_parent" >
     </com.netbean.scrollview.ScrollScreenLayout>
 
-    <com.netbean.scrollview.PageIndicator2
+    <com.netbean.scrollview.PageIndicator
         android:id="@+id/indicatorview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
+		android:layout_alignBottom="@id/screens"
         android:layout_marginBottom="20dp" >
-    </com.netbean.scrollview.PageIndicator2>
+    </com.netbean.scrollview.PageIndicator>
 
-</FrameLayout>
+</RelativeLayout>
