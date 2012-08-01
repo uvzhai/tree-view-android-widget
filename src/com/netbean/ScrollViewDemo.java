@@ -18,18 +18,20 @@ public class ScrollViewDemo extends Activity implements IndicateListener {
 		setContentView(R.layout.screens);
 		// init 
 		mScrollView = (ScrollScreenLayout) findViewById(R.id.screens);
-		addChild(R.drawable.froyo);
-		addChild(R.drawable.gingerbread);
-		addChild(R.drawable.honeycomb);
+		addChild(R.drawable.froyo,0);
+		addChild(R.drawable.gingerbread,1);
+		addChild(R.drawable.honeycomb,2);
 		
 		mIndicator = (PageIndicator) findViewById(R.id.indicatorview);
 		mScrollView.setIndicator(this);
+		mScrollView.setLoopScreen(true);
 	}
 	
-	private void addChild(int nDrawableID)
+	private void addChild(int nDrawableID, int nIndex)
 	{
 		ImageView image = new ImageView(this);
 		image.setImageResource(nDrawableID);
+		image.setTag(nIndex);
 		mScrollView.addView(image);
 	}
 

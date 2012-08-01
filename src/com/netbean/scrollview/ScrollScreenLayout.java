@@ -270,7 +270,7 @@ public class ScrollScreenLayout extends ViewGroup {
 
 		// Loop screen
 		if (mIsLoopScreen)
-		{
+		{ 
 			int scrollX = getScrollX();
 			int startWidth = whichScreen * mWidth;
 			if (scrollX != startWidth)
@@ -278,12 +278,14 @@ public class ScrollScreenLayout extends ViewGroup {
 				int startX = 0;
 				int delta = 0;
 
-				if (whichScreen > 1)
+				// lastScreen - 1 , lastScreen = count - 1;
+				if (whichScreen > this.getChildCount() - 2)
 				{
 					setPre();
 					startX = mWidth - startWidth + scrollX;
 					delta = startWidth - scrollX;
 				}
+				// firstScreen + 1 === 1, firstScreen = 0;
 				else if (whichScreen < 1)
 				{
 					setNext();
@@ -302,7 +304,6 @@ public class ScrollScreenLayout extends ViewGroup {
 		}
 		else
 		{
-			// No loop screen
 			final int newX = whichScreen * getWidth();
 			// final int newXX = getChildAt(whichScreen).getRight() -
 			// getWidth();
@@ -316,7 +317,7 @@ public class ScrollScreenLayout extends ViewGroup {
 	}
 
 	/**
-	 * 
+	 * take first view to last index
 	 */
 	private void setPre()
 	{
@@ -326,6 +327,9 @@ public class ScrollScreenLayout extends ViewGroup {
 		addView(view, count - 1);
 	}
 
+	/**
+	 * take last view to first index
+	 */
 	private void setNext()
 	{
 		int count = this.getChildCount();
