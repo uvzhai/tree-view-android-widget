@@ -3,6 +3,8 @@ To do list:
 8/2
 1.循环左右滑动 indicator
 
+2.采用 双向循环链表 数据结构？
+
 8/1
 1.实现滑动的Indicator
 
