@@ -1,5 +1,8 @@
 To do list:
 
+8/2
+1.循环左右滑动 indicator
+
 8/1
 1.实现滑动的Indicator
 
@@ -11,6 +14,7 @@ To do list:
 3.plus linux c
 4.java multi-thread
 
+
 7/30-31
 1.实现滑动的Indicator
 	a. mScroller.startScroll()
@@ -21,7 +25,7 @@ This is typically as a result of scrollBy(int, int) or scrollTo(int, int) having
 
 7/27-30
 1.左右滑动
-2.循环左右滑动
+
 
 7/26
 1.xml format support
@@ -31,6 +35,11 @@ OOP OPP
 Tree view ListView
 
 7/17
+424218253
+2274360869
+1013690532
+aprildang
+ericfu
 android tree view
 
 1.考虑数据结构，用面向对象的分析方法设计对象结构     
