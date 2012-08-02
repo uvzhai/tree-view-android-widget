@@ -24,7 +24,7 @@ public class ScrollViewDemo extends Activity implements IndicateListener {
 		
 		mIndicator = (PageIndicator) findViewById(R.id.indicatorview);
 		mScrollView.setIndicator(this);
-		mScrollView.setLoopScreen(true);
+		//mScrollView.setLoopScreen(true);
 	}
 	
 	private void addChild(int nDrawableID, int nIndex)
