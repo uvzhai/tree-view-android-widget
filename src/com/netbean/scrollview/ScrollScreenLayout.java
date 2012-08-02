@@ -89,31 +89,21 @@ public class ScrollScreenLayout extends ViewGroup {
 		}
 		else
 		{
-			Log.d(TAG, "computeScroll() update indicator: " + mCurrentScreen);
-			// update indicator
-			if (null != mIndicateListener)
-			{
-				if (mIsLoopScreen)
-				{
-					final int maxScreen = getChildCount() - 1;
-					if (mLastScreen == maxScreen && mCurrentScreen == maxScreen)
-					{
-						mIndicateListener.onIndicatorFull(0);
-					}
-					else if (mLastScreen == 0 && mCurrentScreen == 0)
-					{
-						mIndicateListener.onIndicatorFull(maxScreen);
-					}
-					else
-					{
-						mIndicateListener.onIndicatorFull(mCurrentScreen);
-					}
-				}
-				else
-				{
-					mIndicateListener.onIndicatorFull(mCurrentScreen);
-				}
-			}
+//			Log.d(TAG, "computeScroll() update indicator: " + mCurrentScreen);
+//			// update indicator
+//			if (null != mIndicateListener)
+//			{
+//				if (mIsLoopScreen)
+//				{
+//					View aChild = this.getChildAt(mCurrentScreen);
+//					int index = (Integer)aChild.getTag();
+//					mIndicateListener.onIndicatorFull(index);
+//				}
+//				else
+//				{
+//					mIndicateListener.onIndicatorFull(mCurrentScreen);
+//				}
+//			}
 		}
 	}
 
@@ -128,35 +118,24 @@ public class ScrollScreenLayout extends ViewGroup {
 			float percent = offset / range;
 			int position = Math.round((getChildCount() - 1) * percent);
 			
+			Log.d(TAG, "onScrollChanged: " + position);
 			if (mIsLoopScreen)
 			{
-				final int maxScreen = getChildCount() - 1;
-				if (mLastScreen == maxScreen && position == maxScreen)
-				{
-					mIndicateListener.onIndicatorFull(0);
-				}
-				else if (mLastScreen == 0 && position == 0)
-				{
-					mIndicateListener.onIndicatorFull(maxScreen);
-				}
-				else
-				{
-					mIndicateListener.onIndicatorFull(position);
-				}
+				// key point method
+				View aChild = this.getChildAt(position);
+				int index = (Integer)aChild.getTag();
+				mIndicateListener.onIndicatorFull(index);
 			}
 			else
 			{
 				mIndicateListener.onIndicatorFull(position);
 			}
-			
-			//mIndicateListener.onIndicatorChange(percent);
 		}
 	}
 
 	@Override
 	protected int computeHorizontalScrollRange()
 	{
-		// return super.computeHorizontalScrollRange();
 		final int availableToScroll = getChildAt(getChildCount() - 1).getRight() - getWidth();
 		return availableToScroll;
 	}
@@ -194,7 +173,6 @@ public class ScrollScreenLayout extends ViewGroup {
 
 		boolean isIntercepted = (mTouchState != TOUCH_STATE_REST);
 		return isIntercepted;
-		// return super.onInterceptTouchEvent(ev);
 	}
 
 	@Override
@@ -306,13 +284,11 @@ public class ScrollScreenLayout extends ViewGroup {
 
 	public void snapToScreen(int whichScreen)
 	{
-		Log.d(TAG, "snapToScreen: " + whichScreen);
 		whichScreen = Math.max(0, Math.min(whichScreen, getChildCount() - 1));
-		// save last old screen
-		mLastScreen = mCurrentScreen;
+
 		// set current screen
 		mCurrentScreen = whichScreen;
-
+		Log.d(TAG, "snapToScreen: " + whichScreen);
 		setMWidth();
 
 		// Loop screen
@@ -345,7 +321,7 @@ public class ScrollScreenLayout extends ViewGroup {
 					delta = startWidth - scrollX;
 				}
 
-				mScroller.startScroll(startX, 0, delta, 0, Math.abs(delta) * 2);
+				mScroller.startScroll(startX, 0, delta, 0);
 				invalidate(); // Redraw the layout
 			}
 		}
@@ -431,8 +407,6 @@ public class ScrollScreenLayout extends ViewGroup {
 	private int mTouchState = TOUCH_STATE_REST;
 	private int mTouchSlop;
 
-	// last old screen index
-	private int mLastScreen = -1;
 	private int mCurrentScreen;
 	private int mWidth;
 	private IndicateListener mIndicateListener;
