@@ -325,15 +325,15 @@ public class ScrollScreenLayout extends ViewGroup {
 				// lastScreen - 1 , lastScreen = count - 1;
 				if (whichScreen > this.getChildCount() - 2)
 				{
-					startX = 2*mWidth - startWidth + scrollX;
+					startX = (this.getChildCount() - 2)*mWidth - startWidth + scrollX;
 					delta = startWidth - scrollX;
 					setPre();
 				}
 				// firstScreen + 1 === 1, firstScreen = 0;
 				else if (whichScreen < 1)
 				{
-					startX = scrollX + 2*mWidth;
-					delta = -scrollX;
+					startX = scrollX + mWidth;
+					delta = -scrollX;        
 					setNext();
 				}
 				else

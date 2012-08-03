@@ -22,6 +22,7 @@ public class ScrollViewDemo extends Activity implements IndicateListener {
 		addChild(R.drawable.gingerbread,1);
 		addChild(R.drawable.honeycomb,2);
 		addChild(R.drawable.icecream, 3);
+		addChild(R.drawable.ic_launcher, 4);
 		
 		mIndicator = (PageIndicator) findViewById(R.id.indicatorview);
 		mScrollView.setIndicator(this);
