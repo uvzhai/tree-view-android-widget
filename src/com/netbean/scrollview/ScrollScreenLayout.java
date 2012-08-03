@@ -106,11 +106,32 @@ public class ScrollScreenLayout extends ViewGroup {
 //			}
 		}
 	}
+	
+//	@Override
+//	public void scrollTo(int x, int y)
+//	{
+//		if(mIsLoopScreen)
+//		{
+//			final int width = getWidth();
+//			final int count = getChildCount();
+//			if( x <= -width/2)
+//			{
+//				x = width*count + x;
+//			}
+//			else if( x >= width*count - width/2)
+//			{
+//				x = x - width*count;
+//			}
+//		}
+//		super.scrollTo(x, y);
+//	}
 
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt)
 	{
 		super.onScrollChanged(l, t, oldl, oldt);
+
+		//update indicator
 		if (null != mIndicateListener)
 		{
 			float range = computeHorizontalScrollRange();
@@ -244,9 +265,9 @@ public class ScrollScreenLayout extends ViewGroup {
 				velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
 				int velocityX = (int) velocityTracker.getXVelocity();
 
+				// Fling hard enough to move left
 				if (velocityX > SNAP_VELOCITY && mCurrentScreen > 0)
 				{
-					// Fling hard enough to move left
 					snapToScreen(mCurrentScreen - 1);
 				}
 				// Fling hard enough to move right
@@ -304,16 +325,16 @@ public class ScrollScreenLayout extends ViewGroup {
 				// lastScreen - 1 , lastScreen = count - 1;
 				if (whichScreen > this.getChildCount() - 2)
 				{
-					setPre();
-					startX = mWidth - startWidth + scrollX;
+					startX = 2*mWidth - startWidth + scrollX;
 					delta = startWidth - scrollX;
+					setPre();
 				}
 				// firstScreen + 1 === 1, firstScreen = 0;
 				else if (whichScreen < 1)
 				{
-					setNext();
-					startX = scrollX + mWidth;
+					startX = scrollX + 2*mWidth;
 					delta = -scrollX;
+					setNext();
 				}
 				else
 				{
@@ -368,7 +389,7 @@ public class ScrollScreenLayout extends ViewGroup {
 		Log.d(TAG, "snapToDestination: " + whichScreen);
 		snapToScreen(whichScreen);
 	}
-
+	
 	public interface IndicateListener {
 		/**
 		 * On indicator change.
