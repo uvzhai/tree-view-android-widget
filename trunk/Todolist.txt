@@ -1,19 +1,24 @@
 To do list:
 
+8/6
+Listview adatper 
+update resume
+
+8/6
+java jni C截屏  多终端
+设计模式
+
 8/2 8/3
 1.循环左右滑动 indicator
 
 2.采用 双向循环链表 数据结构？
 	-> 0 -> 1 -> 2 -> 3
-	 
-    
- 
+	     
 8/1
 1.实现滑动的Indicator
 
 7/31
 1.实现滑动的Indicator
-
 
 2.android develop java web develop
 3.plus linux c
@@ -44,6 +49,8 @@ Tree view ListView
 2274360869
 1013690532
 aprildang
+
+fayeliu
 ericfu
 android tree view
 

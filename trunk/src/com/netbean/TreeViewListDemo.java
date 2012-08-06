@@ -96,12 +96,16 @@ public class TreeViewListDemo extends Activity implements OnItemClickListener {
 		}
 
 		setContentView(R.layout.main_demo);
-		treeView = (TreeViewList) findViewById(R.id.mainTreeView);
+		
 		simpleAdapter = new SimpleStandardAdapter(this, selected, manager, LEVEL_NUMBER);
+		
+		treeView = (TreeViewList) findViewById(R.id.mainTreeView);
+		treeView.setOnItemClickListener(this);
+		// set list view adapter
 		setTreeAdapter(newTreeType);
+		
 		setCollapsible(newCollapsible);
 		registerForContextMenu(treeView);
-		treeView.setOnItemClickListener(this);
 	}
 
 	@Override
@@ -113,7 +117,7 @@ public class TreeViewListDemo extends Activity implements OnItemClickListener {
 		super.onSaveInstanceState(outState);
 	}
 
-	protected final void setTreeAdapter(final TreeType newTreeType)
+	private final void setTreeAdapter(final TreeType newTreeType)
 	{
 		this.treeType = newTreeType;
 		switch (newTreeType)
@@ -122,8 +126,6 @@ public class TreeViewListDemo extends Activity implements OnItemClickListener {
 			treeView.setAdapter(simpleAdapter);
 			break;
 		case FANCY:
-			// treeView.setAdapter(fancyAdapter);
-			// break;
 		default:
 			treeView.setAdapter(simpleAdapter);
 		}
@@ -240,10 +242,17 @@ public class TreeViewListDemo extends Activity implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
+		// business logic
 		if(0 == position)
 		{
 			Intent pIntent = new Intent(this, ScrollViewDemo.class);
 			startActivity(pIntent);
 		}
+		else
+		{
+			// view.getTag()
+			simpleAdapter.handleItemClick(view, view.getTag());
+		}
+		
 	}
 }
