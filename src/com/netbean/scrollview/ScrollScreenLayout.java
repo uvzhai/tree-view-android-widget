@@ -37,6 +37,23 @@ public class ScrollScreenLayout extends ViewGroup {
 	{
 		this.mIsLoopScreen = isLoopScreen;
 	}
+	
+	public void setAutoScroll(boolean isAutoScroll)
+	{
+		if(mIsAutoScroll != isAutoScroll)
+		{
+			this.mIsAutoScroll = isAutoScroll;
+			
+			if(mIsAutoScroll)
+			{
+				// start auto scroll
+			}
+			else
+			{
+				// stop auto scroll
+			}
+		}
+	}
 
 	private void init(Context context)
 	{
@@ -433,4 +450,5 @@ public class ScrollScreenLayout extends ViewGroup {
 	private IndicateListener mIndicateListener;
 
 	private boolean mIsLoopScreen;
+	private boolean mIsAutoScroll = false;
 }

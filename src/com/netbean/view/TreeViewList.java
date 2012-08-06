@@ -1,18 +1,16 @@
 package com.netbean.view;
 
-import com.netbean.R;
-import com.netbean.model.AbstractTreeViewAdapter;
-import com.netbean.model.TreeConfigurationException;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.netbean.R;
+import com.netbean.model.AbstractTreeViewAdapter;
+import com.netbean.model.TreeConfigurationException;
 
 /**
  * Tree view, expandable multi-level.
@@ -43,7 +41,8 @@ public class TreeViewList extends ListView {
 	private int indentWidth = 0;
 	private int indicatorGravity = 0;
 	private boolean collapsible;
-	private boolean handleTrackballPress;
+	
+	// list view adapter
 	private AbstractTreeViewAdapter<?> treeAdapter;
 
 	public TreeViewList(final Context context, final AttributeSet attrs)
@@ -86,7 +85,6 @@ public class TreeViewList extends ListView {
 		}
 
 		collapsible = a.getBoolean(R.styleable.TreeViewList_collapsible, true);
-		handleTrackballPress = a.getBoolean(R.styleable.TreeViewList_handle_trackball_press, true);
 	}
 
 	@Override
@@ -107,25 +105,7 @@ public class TreeViewList extends ListView {
 		treeAdapter.setExpandedDrawable(expandedDrawable);
 		treeAdapter.setIndicatorGravity(indicatorGravity);
 		treeAdapter.setIndentWidth(indentWidth);
-
-		// treeAdapter.setIndicatorBackgroundDrawable(indicatorBackgroundDrawable);
-		// treeAdapter.setRowBackgroundDrawable(rowBackgroundDrawable);
-
 		treeAdapter.setCollapsible(collapsible);
-		if (handleTrackballPress)
-		{
-			setOnItemClickListener(new OnItemClickListener() {
-				@Override
-				public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id)
-				{
-					treeAdapter.handleItemClick(view, view.getTag());
-				}
-			});
-		}
-		else
-		{
-			setOnClickListener(null);
-		}
 	}
 
 	public void setExpandedDrawable(final Drawable expandedDrawable)
@@ -177,13 +157,6 @@ public class TreeViewList extends ListView {
 		treeAdapter.refresh();
 	}
 
-	public void setHandleTrackballPress(final boolean handleTrackballPress)
-	{
-		this.handleTrackballPress = handleTrackballPress;
-		syncAdapter();
-		treeAdapter.refresh();
-	}
-
 	public Drawable getExpandedDrawable()
 	{
 		return expandedDrawable;
@@ -217,11 +190,6 @@ public class TreeViewList extends ListView {
 	public boolean isCollapsible()
 	{
 		return collapsible;
-	}
-
-	public boolean isHandleTrackballPress()
-	{
-		return handleTrackballPress;
 	}
 
 }
