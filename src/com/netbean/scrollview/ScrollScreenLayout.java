@@ -1,6 +1,8 @@
 package com.netbean.scrollview;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -47,13 +49,16 @@ public class ScrollScreenLayout extends ViewGroup {
 			if(mIsAutoScroll)
 			{
 				// start auto scroll
-			}
-			else
-			{
-				// stop auto scroll
+				startScroll();
 			}
 		}
 	}
+	
+	private void startScroll()
+	{
+		mHandler.sendMessageDelayed(mHandler.obtainMessage(KScrollScreen), FREQUENCE);
+	}
+	
 
 	private void init(Context context)
 	{
@@ -64,6 +69,20 @@ public class ScrollScreenLayout extends ViewGroup {
 		// mDetector = new GestureDetector(new
 		// GestureDetector.SimpleOnGestureListener());
 		mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
+		
+		mHandler = new Handler()
+		{
+			@Override
+			public void handleMessage(Message msg)
+			{
+				if(msg.what == KScrollScreen)
+				{
+					snapToScreen(mCurrentScreen + 1);
+					ScrollScreenLayout.this.startScroll();
+				}
+				super.handleMessage(msg);
+			}
+		};
 	}
 
 	@Override
@@ -450,5 +469,10 @@ public class ScrollScreenLayout extends ViewGroup {
 	private IndicateListener mIndicateListener;
 
 	private boolean mIsLoopScreen;
+	
 	private boolean mIsAutoScroll = false;
+	private Handler mHandler;
+	private static final int KScrollScreen = 0x001;
+	// frequency time 2s
+	private static final int FREQUENCE = 2000;
 }
