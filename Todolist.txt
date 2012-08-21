@@ -1,4 +1,37 @@
 To do list:
+java 快排
+service activity生命周期
+aidl的原理
+tcp udp区别
+session和cookie区别
+
+8/15
+linux web develop:
+html js  css（偏少） c++ php mysql shell
+
+8/13
+1.Android NDK
+2.mollyyin
+3.allenfang
+4.ericfu
+
+dianping
+chuangxin gongchang
+
+8/10
+
+8/9
+BroadcastReceiver
+
+8/8
+二维码（QR码）ZXing
+ZXing是一个开源Java类库用于解析多种格式的1D/2D条形码。
+目标是能够对QR编码、Data Matrix、UPC的1D条形码进行解码。
+ 其提供了多种平台下的客户端包括：J2ME、J2SE和Android。
+
+8/7
+1.追新提醒
+2.
 
 8/6
 Listview adatper 
