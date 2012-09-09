@@ -37,7 +37,7 @@ ZXing是一个开源Java类库用于解析多种格式的1D/2D条形码。
 Listview adatper 
 
 8/6
-java jni C截屏  多终端
+java jni C截屏  多终端                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 设计模式
 
 8/2 8/3
@@ -45,7 +45,7 @@ java jni C截屏  多终端
 
 2.采用 双向循环链表 数据结构？
 	-> 0 -> 1 -> 2 -> 3
-	     
+
 8/1
 1.实现滑动的Indicator
 

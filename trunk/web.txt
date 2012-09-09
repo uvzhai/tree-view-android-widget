@@ -1,0 +1,27 @@
+问题的提出:现在游戏活动网页，在PC上，手机上要开发两种网页文件
+要解决的问题：PC端，主流屏幕大小不同，网页的布局不能自适应和自调整，要两套网页文件。
+
+目标：对于一种常用网页结构的PC,手机屏幕网页自适应的实现。
+	  达到PC端，主流屏幕上网页的布局自适应和自调整。
+	
+采用的方法：调研css3 media query特性来实现。只开发一种网页文件，提高效率
+
+输出：css3 media query的具体使用方法，对网页布局的要求，一个可工作的例子
+需要验证的问题，在PC上，和android主流分辨率（480*320,800*480,854 * 480），iphone手机（960*640）上，不同浏览器不同版本覆盖率
+
+
+1.html页面结构
+
+TODO
+http://webdesignerwall.com/demo/adaptive-design/final.html
+
+2.定义media-queries.css 
+
+  http://webdesignerwall.com/demo/adaptive-design/media-queries.css
+
+  <link href="media-queries.css" rel="stylesheet" type="text/css">
+
+
+
+
+
