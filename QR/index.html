@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"> 
+<head> 
+<title>在线生成 QR Code-OSTools</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" /> 
+<meta http-equiv="Content-Language" content="zh-CN" /> 
+<meta name="keywords" content="开源中国 在线工具,ostools,jsbin,加密/解密，Markdown,less,java api,php api,node.js api,QR Code"/>
+<meta name="description" content="开源中国在线工具,ostools为开发设计人员提供在线工具，提供jsbin在线 CSS、JS 调试，在线 Java API文档,在线 PHP API文档,在线 Node.js API文档,Less CSS编译器，MarkDown编译器等其他在线工具" />
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" /> 
+<link rel="stylesheet" href="/css/basic.css?20120912" type="text/css"/> 
+<script type="text/javascript" src='/js/jquery/jquery-1.7.2.js'></script>
+<script type="text/javascript" src='/js/jquery/jquery.cookies.2.2.0.min.js'></script>
+<link rel="stylesheet" href='/js/bootstrap/css/bootstrap.min.css'/>
+<script src='/js/bootstrap/js/bootstrap.min.js'></script>
+
+</head>
+<body>
+	<!--     头部header开始    -->
+<div id="header">
+	<div class="wrapper">
+		<div id="mainSearch">
+										
+				<!-- Put the following javascript before the closing </head> tag. -->
+<style>
+.go_search {width: 300px;}
+.go_search .gsc-input td,.go_search .gsc-input tddiv {padding:0 0 0 0;margin:0 0 0 0;height:23px;}
+.go_search .gsc-input input:focus{ 
+border:none;
+
+}
+.go_search .gsc-input input {
+	border:none;
+	height:23px;
+	width: 100%;
+	padding: 0px;
+	border: none;
+	margin: 0px;
+	height: auto;
+	outline: none;
+	-webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+	background-image: url(http://www.google.com/cse/intl/zh_CN/images/google_custom_search_watermark.gif);
+	background-color: rgb(255, 255, 255);
+	background-position: 0% 50%;
+	background-repeat: no-repeat no-repeat;
+}
+</style>
+
+<div class="go_search">
+<!-- Place this tag where you want the search box to render -->
+</div>
+		</div>
+		<div id="logo" class="texthidden" onclick="javascript:location.href='/'">
+			<h1>开源中国在线工具</h1>
+		</div>
+	</div>
+</div>
+<!--     头部header结束    -->
+	<div class="wrapper">
+	<iframe src="http://www.oschina.net/job/api/top_job" id="job_ad" style="border:0 none;width:1000px;height:80px;margin-top:10px;"></iframe>
+	</div>
+	<style>
+	.leftBar .title,.rightBar .title,.topBar .title{margin-bottom:10px;}
+	.bottomBar .title{margin:10px 0;}
+	.topBar input[type='submit']{margin-left:10px;}
+	.OptDetail{text-align:center;margin-left:30px;}
+	.OptDetail li{width:120px;margin:5px 0px 10px 0px;}
+	.OptDetail select{margin:5px 0px 10px 0px;text-align:center;}
+	#pwd{width:110px;}
+	#qrcode img{margin:auto;}
+	.QRCodeDiv{border:1px solid #ccc;width:430px;height:500px;background-color:#eee;text-align:center;}
+	.QRWrapper{height:auto;display:inline-block;line-height:500px;}
+	.QRWrapper img{vertical-align:middle;}
+</style>
+<script type="text/javascript" src="/js/jquery/jquery.form-2.82.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+				$("#submit").click(function(){
+			var url = "/action/qrcode/generate?" + $("#qrcode_form").serialize();
+			$(".QRCodeDiv img").attr("src",url+"&"+new Date().getTime());
+			$("#gen_url").attr("href",url);
+		});
+		    	$("#zxing").popover({
+    		'title':'条形码处理类库 ZXing',
+    		'content':'ZXing是一个开源Java类库用于解析多种格式的1D/2D条形码。目标是能够对QR编码、Data Matrix、UPC的1D条形码进行解码。 其提供了多种平台下的客户端包括：J2ME、J2SE和Android。',
+			'placement':'bottom'
+    	});
+	});
+</script>
+<div id="mainContent" class="wrapper">
+<div class="toolName">在线生成二维码(QR码)-采用<a id="zxing" href="http://www.oschina.net/p/zxing">ZXing</a>与<a href="http://www.d-project.com/">d-project</a><a data-toggle="modal" href="#advice" style="float:right;text-decoration:none;"><span class="badge badge-important"><i class="icon-envelope icon-white"></i> Feedback</span></a></div>
+<div class="toolUsing clearfix">
+	<div class="toolsTab  clearfix">
+	    <ul class="nav nav-tabs">
+            <li class="active"><a href="/qr">转QR码</a></li>
+            <li ><a href="/qr?type=2">二维码解码</a></li>
+	    </ul>
+	    <div class="clear"></div>
+	</div>
+	<form id="qrcode_form" method="post" >
+	    	<div class="leftBar">
+			<div class="title">URL或其他文本:</div>
+			<textarea class="input-xlarge" name="data" onfocus="if(this.value=='http://ostools.net/qr'){this.value='';};this.select();" onblur="(this.value=='')?this.value='http://ostools.net/qr':this.value;">http://ostools.net/qr</textarea>
+    	</div>
+    	<div class="operateLR">
+            <div class="OptDetail span1">
+            	<label>输出格式:</label>
+                <select name="output" class="span1">
+                    <option value="image/gif" selected>GIF</option>
+                    <option value="image/jpeg">JPEG</option>
+                    <option value="image/png">PNG</option>
+                </select>
+                <label>纠错级别:</label>
+                <select name="error" class="span1">
+                    <option value="L" selected>L 7%</option>
+                    <option value="M">M 15%</option>
+                    <option value="Q">Q 25%</option>
+                    <option value="H">H 30%</option>
+                </select>
+                <label>类型:</label>
+        		<select name="type" class="span1">
+                    <option value="0">自动</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                <label>边缘留白:</label>
+    			<select name="margin" class="span1">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                        <option value="32">32</option>
+                                    </select>
+                <label>原胞大小:</label>
+    			<select name="size" class="span1">
+                                        <option value="1"  >1</option>
+                                        <option value="2"  >2</option>
+                                        <option value="3"  >3</option>
+                                        <option value="4" selected >4</option>
+                        			</select>
+				<button style="width:80px;" class="btn btn-primary" id="submit" onclick="return false;">生成QR码</button>            </div>
+    	</div>
+    	<div class="rightBar">
+						<div class="title">QR码：</div>
+            <div class="QRCodeDiv">
+				<div class="QRWrapper">
+					<a id="gen_url" href="/action/qrcode/generate?size=4" target="_blank"><img src="/action/qrcode/generate?size=4"/></a>
+				</div>
+			</div>
+    	</div>
+	    </form>
+</div>
+</div>
+
+	<!--     尾部footer开始    -->
+<div id="footer">
+	<p class="wrapper">
+		OSTools.NET 由 <a href="http://www.oschina.net/" target="_blank">开源中国</a> 所有 | <a href="http://weibo.com/oschina2010" target="_blank">@新浪微博</a> | <a data-toggle="modal" href="#advice">意见反馈</a> | 粤ICP备12009483号-5 | <script src="http://s9.cnzz.com/stat.php?id=4420195&web_id=4420195&show=pic1" language="JavaScript"></script>
+	</p>
+</div>
+<!--     尾部footer结束    -->	<div class="modal hide fade" id="advice" style="display:none;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>在线生成 QR Code</h3>
+      </div>
+      <div class="modal-body">
+		<p>在此填写您的意见信息：</p>
+		<form class='well' id='advice_form'>
+			<input id="tool_name_f" type='hidden' name='tool_name' value='在线生成 QR Code'/>
+			<div class="input-prepend">
+			<span class="add-on">Email邮箱:</span><input class="input-xlarge" type="text" id="advice_email" name="email" placeholder="在此输入您的Email" onblur="javascript:verifyEmail();" title="Email邮箱"/><span style="color:#A00" id="email_error"> (必填) </span>
+			</div>
+			
+            <label class="textarea">您的建议和意见：<br><textarea name="content" id="advice_content" style="width:480px;height:150px" placeholder="在此填写对  在线生成 QR Code 的意见和建议"></textarea></label>
+			<label class="input">验证码：
+			<img style="margin-bottom:9px;" src="/action/jsbin/captcha" id="captcha_code" height="30px" width="80px" onclick="this.src = '/action/jsbin/captcha?'+new Date().getTime();"/>
+			<input type="text" id="captcha_input" onkeyup="document.getElementById('verifyCode').value=this.value;" style="height:20px;width:30px;"/>
+			<input id="verifyCode" name="verifyCode" type="hidden"/></label>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">取消</a>
+        <a href="#" class="btn btn-primary" id="advice_submit" disabled='disabled'>提交建议</a>
+      </div>
+    </div>
+<script>
+function verifyEmail(){
+	if(null == $("#advice_email").val().match(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)){
+		$("#email_error").html(" email输入错误 ");
+		$("#advice_email").focus();
+	}
+	else{
+		$("#email_error").html("<i class='icon-ok'></i>");
+		$("#advice_submit").removeAttr("disabled");
+	}
+}
+$(document).ready(function (){
+	$("#advice_submit").click(function (){
+		$.post("/action/advice/add_advice",
+		{ tool_name : $("#tool_name_f").val() , email: $("#advice_email").val(), content: $("#advice_content").val() ,verifyCode: $("#verifyCode").val()},
+		function (result){
+			var m=eval('(' + result + ')');
+			if("ok"==m.msg){
+				alert("谢谢您的建议，我们会参考您的建议使ostools变得更好！");
+				$('#advice').modal('hide');
+				$("#captcha_code").attr("src",'/action/jsbin/captcha?'+new Date().getTime());
+			}
+			else{
+				alert(m.msg);
+			}
+		});
+	});
+});
+</script>
+	<a class="bshareDiv" href="http://www.bshare.cn/share">分享按钮</a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=&amp;style=3&amp;fs=4&amp;textcolor=#fff&amp;bgcolor=#06C&amp;text=分享到&amp;pophcol=1"></script>
+</body>
+</html>
+<!-- Generated by OSCTools.NET (Sun Dec 23 22:04:54 CST 2012) 4ms -->
